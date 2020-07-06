@@ -19,6 +19,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('introduction/', include('introduction.urls')),
+    path('introduction/', include('introduction.urls')), #intro~/ 으로 시작하는 url은 introduction 앱의 urls.py 에서 관리
     path('', views.main, name="main"),
+    path('posts/', include('posts.urls')),
 ]
