@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'shared/_navbar.html' %}
+
+<h1>main page</h1>
+<img src="{% static 'images/cat.jpg' %}" alt="고앵이">
+
+{% endblock %}
