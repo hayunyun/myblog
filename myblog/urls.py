@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('introduction/', include('introduction.urls')), #intro~/ 으로 시작하는 url은 introduction 앱의 urls.py 에서 관리
     path('', views.main, name="main"),
     path('posts/', include('posts.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
