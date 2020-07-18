@@ -39,7 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'introduction',
     'posts',
+    'django.contrib.sites', # migrate 할 때 필요
+
+    # Django-allauth 관련 앱
+    'allauth', 
+    'allauth.account', # 가입한 계정 관리
+    'allauth.socialaccount', # 소셜 계정으로 가입한 계정 관리
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,3 +133,13 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'myblog', 'media')
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID=1
+LOGIN_REDIRECT_URL = '/'
