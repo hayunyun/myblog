@@ -7,9 +7,10 @@ def new(request):
 def create(request):
     if request.method == "POST":
         title = request.POST.get('title')
+        user = request.user
         content = request.POST.get('content')
         image = request.FILES.get('image')
-        Post.objects.create(title=title, content=content, image=image)
+        Post.objects.create(title=title, user=user, content=content, image=image)
         return redirect('posts:main')
 
 def main(request):
